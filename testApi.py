@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import json
-from your_flashpoint_model import FlashPointModel, FirefighterAgent, FireState, CellType, POI
+from flashpointModel import FlashPointModel, FirefighterAgent, FireState, CellType, POI
 
 app = Flask("Python-Server")
 CORS(app)  # Permite conexiones desde Unity
@@ -9,9 +9,10 @@ CORS(app)  # Permite conexiones desde Unity
 # Instancia global del modelo
 current_model = None
 
-@app.route('/api/test', methods=['GET'])
+@app.route('/', methods=['GET'])
 def test_api():
     return {"message": "Hello from Flash Point API!", "status": "CONNECTED"}
+@app.route('/api/game/create', methods=['GET'])
 
 @app.route('/api/game/create', methods=['POST'])
 def create_game():
